@@ -31,7 +31,6 @@ class RegisteredUserController extends Controller
         $user->last_name = $request->last_name;
         $user->email     = $request->email;
         $user->password  = Hash::make($request->password);
-        $user->rol_id    = 2;
 
         $user->save();
 

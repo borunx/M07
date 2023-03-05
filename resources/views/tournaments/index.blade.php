@@ -12,7 +12,7 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Fecha</th>
-                            @auth<th>Acciones</th>@endauth
+                            @role('admin')<th>Acciones</th>@endrole
                         </tr>
                     </thead>
         
@@ -25,7 +25,7 @@
                             <td>{{$count}}</td>
                             <td>{{$tournament->name}}</td>
                             <td>{{ date('d-m-Y', strtotime($tournament->tournament_date)) }}</td>
-                            @auth
+                            @role('admin')
                                 <td>
 
                                     <form action="{{ route('tournaments.destroy',$tournament->id) }}" method="POST">
@@ -41,7 +41,7 @@
                                     </form>
 
                                 </td>
-                            @endauth
+                            @endrole
                         </tr>
                         @php($count++)
                         @endforeach
@@ -50,7 +50,7 @@
                 
     
             </div>
-            @auth<a href="{{route('tournaments.create')}}" class="btn btn-success p-2 my-4">Crear Torneo</a>@endauth
+            @role('admin')<a href="{{route('tournaments.create')}}" class="btn btn-success p-2 my-4">Crear Torneo</a>@endrole
               
         </div>
     

@@ -36,8 +36,8 @@ class TournamentController extends Controller
         ]);
 
         $tournament = new Tournament();
-        $tournament->name   = $request->name;
-        $tournament->tournament_date   = $request->tournament_date;
+        $tournament->name            = $request->name;
+        $tournament->tournament_date = $request->tournament_date;
 
         $tournament->save();
 

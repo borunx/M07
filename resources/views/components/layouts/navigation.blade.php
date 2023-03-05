@@ -24,9 +24,22 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="{{ route('contact') }}" style="color:FFFFFF;">Contacto</a>
           </li>
-          <button type="button" class="btn btn-light text-body ms-3 rounded-pill">
-            <a href="{{ route('login') }}" class="text-decoration-none text-body">Iniciar Sesión</a> 
-          </button>
+
+          @guest
+            <button type="button" class="btn btn-light text-body ms-3 rounded-pill">
+              <a href="{{ route('login.index') }}" class="text-decoration-none text-body">Iniciar Sesión</a> 
+            </button>
+          @endguest
+
+          @auth
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+
+              <button type="submit" class="btn btn-danger text-white ms-3 rounded-pill">Logout</button>
+
+            </form>
+            
+          @endauth
         </ul>
       </div>
     </div>

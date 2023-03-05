@@ -12,7 +12,7 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Fecha</th>
-                            <th>Acciones</th>
+                            @auth<th>Acciones</th>@endauth
                         </tr>
                     </thead>
         
@@ -25,21 +25,23 @@
                             <td>{{$count}}</td>
                             <td>{{$tournament->name}}</td>
                             <td>{{ date('d-m-Y', strtotime($tournament->tournament_date)) }}</td>
-                            <td>
+                            @auth
+                                <td>
 
-                                <form action="{{ route('tournaments.destroy',$tournament->id) }}" method="POST">
-                                
-                                    <a class="btn btn-warning" href="{{ route('tournaments.edit',$tournament->id) }}">Editar</a>
+                                    <form action="{{ route('tournaments.destroy',$tournament->id) }}" method="POST">
+                                    
+                                        <a class="btn btn-warning" href="{{ route('tournaments.edit',$tournament->id) }}">Editar</a>
 
-                                    @csrf
+                                        @csrf
 
-                                    @method('DELETE')
+                                        @method('DELETE')
 
-                                    <button type="submit" class="btn btn-danger">Borrar</button>
-                                
-                                </form>
+                                        <button type="submit" class="btn btn-danger">Borrar</button>
+                                    
+                                    </form>
 
-                            </td>
+                                </td>
+                            @endauth
                         </tr>
                         @php($count++)
                         @endforeach
@@ -48,7 +50,7 @@
                 
     
             </div>
-            <a href="{{route('tournaments.create')}}" class="btn btn-success p-2 my-4">Crear Torneo</a>
+            @auth<a href="{{route('tournaments.create')}}" class="btn btn-success p-2 my-4">Crear Torneo</a>@endauth
               
         </div>
     

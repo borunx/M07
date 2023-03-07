@@ -8,6 +8,12 @@ use App\Models\Tournament;
 
 class TournamentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,12 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        return $tournaments = Tournament::all();
+        $tournaments = Tournament::all();
+
+        return response()->json([
+            'status' => 'success',
+            'tournaments' => $tournaments,
+        ]);
         //return view('tournaments', compact('tournaments'));
     }
 
@@ -32,13 +43,16 @@ class TournamentController extends Controller
             'tournament_date' => 'required',
         ]);
 
-        $tournament = new Tournament();
-        $tournament->name              = $request->name;
-        $tournament->tournament_date   = $request->tournament_date;
+        $tournament = Tournament::create([
+            'name' => $request->name,
+            'tournament_date' => $request->tournament_date,
+        ]);
 
-        $tournament->save();
-
-        return $tournament;
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Tournament created successfully',
+            'tournament' => $tournament,
+        ]);
     }
 
     /**
@@ -51,7 +65,10 @@ class TournamentController extends Controller
     {
         $tournament = Tournament::find($id);
 
-        return $tournament;
+        return response()->json([
+            'status' => 'success',
+            'tournament' => $tournament,
+        ]);
     }
 
     /**
@@ -61,16 +78,23 @@ class TournamentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tournament $tournament)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name'            => 'required',
             'tournament_date' => 'required',
         ]);
 
-        $tournament->update($request->all());
+        $tournament = Tournament::find($id);
+        $tournament->name = $request->name;
+        $tournament->tournament_date = $request->tournament_date;
+        $tournament->save();
 
-        return $tournament;
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Tournament updated successfully',
+            'tournament' => $tournament,
+        ]);
     }
 
     /**
@@ -83,12 +107,12 @@ class TournamentController extends Controller
     {
         $tournament = Tournament::find($id);
 
-        if(is_null($tournament)){
-            return response()->json("No se pudo realizar correctamente borrado",404);
-        }
-
         $tournament->delete();
 
-        return response()->noContent();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Tournament deleted successfully',
+            'tournament' => $tournament,
+        ]);
     }
 }

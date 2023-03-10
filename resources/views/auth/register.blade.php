@@ -13,7 +13,7 @@
                         @csrf
                         <h2 class="text-center" style="color: #5EE4A3">Registro</h2>
                         <div class="col-md-6 form-floating">
-                          <input type="text" class="form-control rounded-pill" autofocus="autofocus" id="name" name="name" value="{{old('name')}}" placeholder="> Nombre" style="background-color: #0E131F; border-color:#5EE4A3">
+                          <input type="text" class="form-control rounded-pill text-white" autofocus="autofocus" id="name" name="name" value="{{old('name')}}" placeholder="> Nombre" style="background-color: #0E131F; border-color:#5EE4A3">
                           <label for="name" style="color: #5EE4A3">> Nombre</label>
                         </div>
 
@@ -23,7 +23,7 @@
                         @enderror
 
                         <div class="col-md-6 form-floating">
-                          <input type="text" class="form-control rounded-pill" id="last_name" name="last_name" value="{{old('last_name')}}" placeholder="> Apellidos" style="background-color: #0E131F; border-color:#5EE4A3">
+                          <input type="text" class="form-control rounded-pill text-white" id="last_name" name="last_name" value="{{old('last_name')}}" placeholder="> Apellidos" style="background-color: #0E131F; border-color:#5EE4A3">
                           <label for="lastname" style="color: #5EE4A3">> Apellido</label>
                         </div>
 
@@ -33,7 +33,7 @@
                         @enderror
 
                         <div class="col-md-12 form-floating">
-                            <input type="email" class="form-control rounded-pill" id="email" name="email" value="{{old('email')}}" placeholder="> Email" style="background-color: #0E131F; border-color:#5EE4A3">
+                            <input type="email" class="form-control rounded-pill text-white" id="email" name="email" value="{{old('email')}}" placeholder="> Email" style="background-color: #0E131F; border-color:#5EE4A3">
                             <label for="email" style="color: #5EE4A3">> Email</label>
                         </div>
 
@@ -43,7 +43,7 @@
                         @enderror
 
                         <div class="col-md-6 form-floating">
-                            <input type="password" class="form-control rounded-pill" name="password" id="password" placeholder="> Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
+                            <input type="password" class="form-control rounded-pill text-white" name="password" id="password" placeholder="> Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
                             <label for="password" style="color: #5EE4A3">> Contraseña</label>
                         </div>
 

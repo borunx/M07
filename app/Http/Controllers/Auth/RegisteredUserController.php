@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Models\User;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -27,12 +29,14 @@ class RegisteredUserController extends Controller
 
         $user = new User();
 
-        $user->name      = $request->name;
-        $user->last_name = $request->last_name;
-        $user->email     = $request->email;
-        $user->password  = Hash::make($request->password);
+        $user = User::create([
+            'name' => $request->name,
+            'last_name' => $request->last_name,
+            'email'=> $request->email, 
+            'password' => Hash::make($request->password)
+        ],);
 
-        $user->save();
+        $user->assignRole('student');
 
         // Auth::login($user);
 

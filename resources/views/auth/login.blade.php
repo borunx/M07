@@ -9,7 +9,7 @@
                     <h2 class="text-center" style="color: #5EE4A3">Iniciar Sesión</h2>
 
                     <div class="col-md-12 form-floating">
-                      <input type="text" class="form-control rounded-pill" name="email" id="email" placeholder="> Correo" style="background-color: #0E131F; border-color:#5EE4A3">
+                      <input type="text" class="form-control rounded-pill text-white" name="email" id="email" value="{{old('email')}}" placeholder="> Correo" style="background-color: #0E131F; border-color:#5EE4A3">
                       <label for="email" style="color: #5EE4A3">> Email</label>
                     </div>
 
@@ -19,7 +19,7 @@
                     @enderror
 
                     <div class="col-md-12 form-floating">
-                      <input type="password" class="form-control rounded-pill" name="password" id="password" placeholder="> Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
+                      <input type="password" class="form-control rounded-pill text-white" name="password" id="password" placeholder="> Contraseña" style="background-color: #0E131F; border-color:#5EE4A3">
                       <label for="password" style="color: #5EE4A3">> Contraseña</label>
                     </div>
 

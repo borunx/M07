@@ -32,7 +32,7 @@
             <form action="{{ route('logout') }}" method="POST">
               @csrf
 
-              <button type="submit" class="btn btn-danger text-white ms-3 rounded-pill">Logout</button>
+              <button type="submit" class="btn btn-danger text-white ms-3 rounded-pill">Logout @role('admin') Admin @endrole @role('student') Student @endrole</button>
 
             </form>
             

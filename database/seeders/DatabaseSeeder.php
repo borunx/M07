@@ -33,8 +33,22 @@ class DatabaseSeeder extends Seeder
             'email'     => 'pmartinez2@gmail.com',
             'password'  => bcrypt('jonatan01'),
         ])->assignRole('admin');
+
+        User::create([
+            'name'      => 'Anthony',
+            'last_name' => 'Reyes',
+            'email'     => 'amreyes@gmail.com',
+            'password'  => bcrypt('jonatan01'),
+        ])->assignRole('student');
+
+        User::create([
+            'name'      => 'Ruyou',
+            'last_name' => 'Hu Ye',
+            'email'     => 'rhuye@gmail.com',
+            'password'  => bcrypt('jonatan01'),
+        ])->assignRole('student');
         
-        User::factory(10)->create()->each(function ($user) {
+        User::factory(6)->create()->each(function ($user) {
             $user->assignRole('student');
         });
 

@@ -27,7 +27,4 @@ class MainController extends Controller
         return view('team', compact('names_upc','names_proven','img_proven'));
     }
 
-    public function contact(){
-        return view('contact');
-    }
 }

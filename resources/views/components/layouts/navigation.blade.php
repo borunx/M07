@@ -21,9 +21,6 @@
           <li class="nav-item">
             <a class="nav-link text-white" href="{{ route('tournaments.index') }}" style="color:FFFFFF;">Torneos</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="{{ route('contact') }}" style="color:FFFFFF;">Contacto</a>
-          </li>
 
           @guest
             <button type="button" class="btn btn-light text-body ms-3 rounded-pill">
